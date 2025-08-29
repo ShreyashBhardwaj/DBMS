@@ -18,10 +18,6 @@ DROP TABLE Registration;
 -- 6. Truncate a table (Removing the entire data) //Not Necessary
 TRUNCATE TABLE Student;
 
--- 7. Rename a table //Not Necessary
-RENAME old_table_name TO new_table_name;
-
-
 DML Commands
 
 -- Department
