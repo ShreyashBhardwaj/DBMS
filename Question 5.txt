@@ -2,7 +2,6 @@
 
 SELECT s.StudentID, s.Name, d.DeptName FROM Student s INNER JOIN Department d ON s.DeptID = d.DeptID;
 
-
 --LEFT JOIN
 
 SELECT s.StudentID, s.Name, c.CourseName FROM Student s LEFT JOIN Enrollment e ON s.StudentID = e.StudentID LEFT JOIN Course c ON e.CourseID = c.CourseID;
