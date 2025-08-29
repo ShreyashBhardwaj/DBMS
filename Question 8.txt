@@ -1,0 +1,42 @@
+-- 1. Create Department (Parent)
+CREATE TABLE Department (
+    DeptID INT PRIMARY KEY,
+    DeptName VARCHAR2(100) NOT NULL
+);
+
+-- 2. Create Student (Child, without CASCADE yet)
+CREATE TABLE Student (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR2(100) NOT NULL,
+    DeptID INT NOT NULL,
+    CONSTRAINT fk_student_dept FOREIGN KEY (DeptID)
+        REFERENCES Department(DeptID)  -- will alter to cascade
+);
+
+-- 3. Alter FK to add ON DELETE CASCADE
+ALTER TABLE Student
+DROP CONSTRAINT fk_student_dept;
+
+ALTER TABLE Student
+ADD CONSTRAINT fk_student_dept FOREIGN KEY (DeptID)
+    REFERENCES Department(DeptID) ON DELETE CASCADE;
+
+-- 4. Insert Departments
+INSERT INTO Department VALUES (1, 'Computer Science');
+INSERT INTO Department VALUES (2, 'Mechanical');
+
+-- 5. Insert Students
+INSERT INTO Student VALUES (101, 'Amit Kumar', 1);
+INSERT INTO Student VALUES (102, 'Neha Singh', 1);
+INSERT INTO Student VALUES (103, 'Ravi Verma', 2);
+
+-- 6. Check data before delete
+SELECT * FROM Department;
+SELECT * FROM Student;
+
+-- 7. Delete DeptID=1 → Students 101 & 102 should be auto-deleted
+DELETE FROM Department WHERE DeptID = 1;
+
+-- 8. Check again
+SELECT * FROM Department;
+SELECT * FROM Student;

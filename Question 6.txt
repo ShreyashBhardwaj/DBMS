@@ -1,0 +1,22 @@
+AGGREGATE FUNCTIONS
+
+-- MAX
+
+SELECT MAX(Credits) AS MaxCredits FROM Course;
+
+
+-- MIN
+
+SELECT MIN(DOB) AS OldestStudentDOB FROM Student;
+
+
+-- AVG
+
+SELECT AVG(Credits) AS AverageCredits FROM Course;
+
+
+-- COUNT
+
+SELECT COUNT(*) AS TotalStudents FROM Student;
+
+

@@ -1,0 +1,14 @@
+-- Department Table
+CREATE TABLE Department (DeptID INT PRIMARY KEY, DeptName VARCHAR2(100) NOT NULL, HOD VARCHAR2(100) NOT NULL);
+
+-- Student Table
+CREATE TABLE Student (StudentID INT PRIMARY KEY, Name VARCHAR2(100) NOT NULL, Gender CHAR(1) CHECK (Gender IN ('M','F')), DOB DATE NOT NULL, DeptID INT NOT NULL, Email VARCHAR2(100), CONSTRAINT fk_student_dept FOREIGN KEY (DeptID) REFERENCES Department(DeptID));
+
+-- Faculty Table
+CREATE TABLE Faculty (FacultyID INT PRIMARY KEY, Name VARCHAR2(100) NOT NULL, DeptID INT NOT NULL, CONSTRAINT fk_faculty_dept FOREIGN KEY (DeptID) REFERENCES Department(DeptID));
+
+-- Course Table
+CREATE TABLE Course (CourseID INT PRIMARY KEY, CourseName VARCHAR2(100) NOT NULL, Credits INT CHECK (Credits BETWEEN 1 AND 6), DeptID INT NOT NULL, FacultyID INT NOT NULL, CONSTRAINT fk_course_dept FOREIGN KEY (DeptID) REFERENCES Department(DeptID), CONSTRAINT fk_course_faculty FOREIGN KEY (FacultyID) REFERENCES Faculty(FacultyID));
+
+-- Enrollment Table
+CREATE TABLE Enrollment (EnrollID INT PRIMARY KEY, StudentID INT NOT NULL, CourseID INT NOT NULL, Semester VARCHAR2(20) NOT NULL, Grade CHAR(2) CHECK (Grade IN ('A','B','C','D','F')),     CONSTRAINT fk_enroll_student FOREIGN KEY (StudentID) REFERENCES Student(StudentID), CONSTRAINT fk_enroll_course FOREIGN KEY (CourseID) REFERENCES Course(CourseID));

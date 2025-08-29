@@ -1,0 +1,76 @@
+DDL Commands
+
+-- 1. Add a new column in Student table
+ALTER TABLE Student ADD Email VARCHAR2(100);
+
+-- 2. Modify column type in Course table
+ALTER TABLE Course MODIFY CourseName VARCHAR2(150);
+
+-- 3. Drop a column from Faculty table
+ALTER TABLE Faculty DROP COLUMN DeptID;
+
+-- 4. Rename a table (Enrollment → Registration)
+RENAME Enrollment TO Registration;
+
+-- 5. Drop a table (if needed)
+DROP TABLE Registration;
+
+-- 6. Truncate a table (Removing the entire data) //Not Necessary
+TRUNCATE TABLE Student;
+
+-- 7. Rename a table //Not Necessary
+RENAME old_table_name TO new_table_name;
+
+
+DML Commands
+
+-- Department
+INSERT INTO Department VALUES (1, 'Computer Science', 'Dr. Sharma');
+INSERT INTO Department VALUES (2, 'Mechanical', 'Dr. Patel');
+INSERT INTO Department VALUES (3, 'Electrical', 'Dr. Reddy');
+INSERT INTO Department VALUES (4, 'Civil', 'Dr. Rao');
+INSERT INTO Department VALUES (5, 'IT', 'Dr. Gupta');
+
+-- Student
+INSERT INTO Student VALUES (101, 'Amit Kumar', 'M', TO_DATE('2002-05-12','YYYY-MM-DD'), 1, 'amit@gmail.com');
+
+INSERT INTO Student VALUES (102, 'Neha Singh', 'F', TO_DATE('2003-08-21','YYYY-MM-DD'), 2, 'neha@gmail.com');
+
+INSERT INTO Student VALUES (103, 'Ravi Verma', 'M', TO_DATE('2001-11-02','YYYY-MM-DD'), 1, 'ravi@gmail.com');
+
+INSERT INTO Student VALUES (104, 'Priya Sharma', 'F', TO_DATE('2002-01-15','YYYY-MM-DD'), 3, 'priya@gmail.com');
+
+INSERT INTO Student VALUES (105, 'Karan Mehta', 'M', TO_DATE('2003-03-30','YYYY-MM-DD'), 4, 'karan@gmail.com');
+
+-- Faculty
+INSERT INTO Faculty VALUES (201, 'Prof. Verma', 1);
+INSERT INTO Faculty VALUES (202, 'Prof. Iyer', 2);
+INSERT INTO Faculty VALUES (203, 'Prof. Menon', 3);
+INSERT INTO Faculty VALUES (204, 'Prof. Desai', 4);
+INSERT INTO Faculty VALUES (205, 'Prof. Rao', 5);
+
+-- Course
+INSERT INTO Course VALUES (301, 'DBMS', 4, 1, 201);
+INSERT INTO Course VALUES (302, 'Thermodynamics', 3, 2, 202);
+INSERT INTO Course VALUES (303, 'Circuits', 4, 3, 203);
+INSERT INTO Course VALUES (304, 'Structural Analysis', 3, 4, 204);
+INSERT INTO Course VALUES (305, 'Networking', 4, 5, 205);
+
+-- Enrollment
+INSERT INTO Enrollment VALUES (401, 101, 301, 'Sem-5', 'A');
+INSERT INTO Enrollment VALUES (402, 102, 302, 'Sem-3', 'B');
+INSERT INTO Enrollment VALUES (403, 103, 301, 'Sem-5', 'A');
+INSERT INTO Enrollment VALUES (404, 104, 303, 'Sem-4', 'C');
+INSERT INTO Enrollment VALUES (405, 105, 304, 'Sem-6', 'B');
+
+-- Update Student email
+UPDATE Student SET Email = 'amitkumar123@gmail.com' WHERE StudentID = 101;
+
+-- Update Course credits
+UPDATE Course SET Credits = 5 WHERE CourseID = 301;
+
+-- Delete a Student
+DELETE FROM Student WHERE StudentID = 102;
+
+-- Delete a Course
+DELETE FROM Course WHERE CourseID = 302;

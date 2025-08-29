@@ -1,0 +1,24 @@
+--IN
+SELECT Name, DeptID FROM Student WHERE DeptID IN (1, 5);
+
+--EXISITS
+SELECT s.StudentID, s.Name FROM Student s WHERE EXISTS (SELECT 1 FROM Enrollment e WHERE e.StudentID = s.StudentID);
+
+--NOT EXISITS
+SELECT s.StudentID, s.Name FROM Student s WHERE NOT EXISTS (SELECT 1 FROM Enrollment e WHERE e.StudentID = s.StudentID);
+
+--ANY
+SELECT s.StudentID, s.Name, s.DOB FROM Student s WHERE s.DOB < ANY (SELECT DOB FROM Student WHERE DeptID = 2);
+
+--ALL
+SELECT s.StudentID, s.Name, s.DOB FROM Student s WHERE s.DOB < ALL (SELECT DOB FROM Student WHERE DeptID = 2);
+
+--UNION
+SELECT Name FROM Student
+UNION
+SELECT Name FROM Faculty;
+
+--INTERSECT
+SELECT Name FROM Student
+INTERSECT
+SELECT Name FROM Faculty;

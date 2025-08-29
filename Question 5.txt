@@ -1,0 +1,20 @@
+--INNER JOIN
+
+SELECT s.StudentID, s.Name, d.DeptName FROM Student s INNER JOIN Department d ON s.DeptID = d.DeptID;
+
+
+--LEFT JOIN
+
+SELECT s.StudentID, s.Name, c.CourseName FROM Student s LEFT JOIN Enrollment e ON s.StudentID = e.StudentID LEFT JOIN Course c ON e.CourseID = c.CourseID;
+
+--RIGHT JOIN
+
+SELECT c.CourseID, c.CourseName, s.Name FROM Student s RIGHT JOIN Enrollment e ON s.StudentID = e.StudentID RIGHT JOIN Course c ON e.CourseID = c.CourseID;
+
+--FULL OUTER JOIN
+
+SELECT s.StudentID, s.Name, c.CourseName FROM Student s FULL OUTER JOIN Enrollment e ON s.StudentID = e.StudentID FULL OUTER JOIN Course c ON e.CourseID = c.CourseID;
+
+--JOIN WITH MULTIPLE TABLES
+
+SELECT s.Name AS StudentName, d.DeptName, c.CourseName, f.Name AS FacultyName FROM Student s JOIN Department d ON s.DeptID = d.DeptID JOIN Enrollment e ON s.StudentID = e.StudentID JOIN Course c ON e.CourseID = c.CourseID JOIN Faculty f ON c.FacultyID = f.FacultyID;

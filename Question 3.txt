@@ -1,0 +1,118 @@
+-- 1. Department (no constraints initially)
+CREATE TABLE Department (
+    DeptID INT,
+    DeptName VARCHAR2(100),
+    HOD VARCHAR2(100)
+);
+
+-- 2. Student
+CREATE TABLE Student (
+    StudentID INT,
+    Name VARCHAR2(100),
+    Gender CHAR(1),
+    DOB DATE,
+    DeptID INT
+);
+
+-- 3. Faculty
+CREATE TABLE Faculty (
+    FacultyID INT,
+    Name VARCHAR2(100),
+    DeptID INT
+);
+
+-- 4. Course
+CREATE TABLE Course (
+    CourseID INT,
+    CourseName VARCHAR2(100),
+    Credits INT,
+    DeptID INT,
+    FacultyID INT
+);
+
+-- 5. Enrollment
+CREATE TABLE Enrollment (
+    EnrollID INT,
+    StudentID INT,
+    CourseID INT,
+    Semester VARCHAR2(20),
+    Grade CHAR(2)
+);
+
+------------------------------------------------------
+-- 🔹 Applying Constraints using ALTER
+------------------------------------------------------
+
+-- Department
+ALTER TABLE Department
+    ADD CONSTRAINT pk_dept PRIMARY KEY (DeptID);
+
+ALTER TABLE Department
+    MODIFY (DeptName VARCHAR2(100) NOT NULL);
+
+ALTER TABLE Department
+    MODIFY (HOD VARCHAR2(100) NOT NULL);
+
+-- Student
+ALTER TABLE Student
+    ADD CONSTRAINT pk_student PRIMARY KEY (StudentID);
+
+ALTER TABLE Student
+    MODIFY (Name VARCHAR2(100) NOT NULL);
+
+ALTER TABLE Student
+    MODIFY (DOB DATE NOT NULL);
+
+ALTER TABLE Student
+    ADD CONSTRAINT chk_gender CHECK (Gender IN ('M','F'));
+
+ALTER TABLE Student
+    ADD CONSTRAINT fk_student_dept FOREIGN KEY (DeptID)
+        REFERENCES Department(DeptID);
+
+-- Faculty
+ALTER TABLE Faculty
+    ADD CONSTRAINT pk_faculty PRIMARY KEY (FacultyID);
+
+ALTER TABLE Faculty
+    MODIFY (Name VARCHAR2(100) NOT NULL);
+
+ALTER TABLE Faculty
+    ADD CONSTRAINT fk_faculty_dept FOREIGN KEY (DeptID)
+        REFERENCES Department(DeptID);
+
+-- Course
+ALTER TABLE Course
+    ADD CONSTRAINT pk_course PRIMARY KEY (CourseID);
+
+ALTER TABLE Course
+    MODIFY (CourseName VARCHAR2(100) NOT NULL);
+
+ALTER TABLE Course
+    ADD CONSTRAINT chk_credits CHECK (Credits BETWEEN 1 AND 6);
+
+ALTER TABLE Course
+    ADD CONSTRAINT fk_course_dept FOREIGN KEY (DeptID)
+        REFERENCES Department(DeptID);
+
+ALTER TABLE Course
+    ADD CONSTRAINT fk_course_faculty FOREIGN KEY (FacultyID)
+        REFERENCES Faculty(FacultyID);
+
+-- Enrollment
+ALTER TABLE Enrollment
+    ADD CONSTRAINT pk_enroll PRIMARY KEY (EnrollID);
+
+ALTER TABLE Enrollment
+    MODIFY (Semester VARCHAR2(20) NOT NULL);
+
+ALTER TABLE Enrollment
+    ADD CONSTRAINT chk_grade CHECK (Grade IN ('A','B','C','D','F'));
+
+ALTER TABLE Enrollment
+    ADD CONSTRAINT fk_enroll_student FOREIGN KEY (StudentID)
+        REFERENCES Student(StudentID);
+
+ALTER TABLE Enrollment
+    ADD CONSTRAINT fk_enroll_course FOREIGN KEY (CourseID)
+        REFERENCES Course(CourseID);

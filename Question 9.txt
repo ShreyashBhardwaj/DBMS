@@ -1,0 +1,9 @@
+CREATE USER college_user IDENTIFIED BY strongpassword;
+
+GRANT CONNECT, RESOURCE TO college_user;
+
+CREATE ROLE college_role;
+
+GRANT CREATE TABLE, CREATE VIEW, CREATE SESSION TO college_role;
+
+GRANT college_role TO college_user;

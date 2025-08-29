@@ -1,0 +1,16 @@
+College DATABASE
+
+-- 1. Department Table
+CREATE TABLE Department (DeptID INT PRIMARY KEY, DeptName VARCHAR2(100) NOT NULL, HOD VARCHAR2(100));
+
+-- 2. Student Table
+CREATE TABLE Student (StudentID INT PRIMARY KEY, Name VARCHAR2(100) NOT NULL, Gender VARCHAR2(1), DOB DATE, DeptID INT, FOREIGN KEY (DeptID) REFERENCES Department(DeptID));
+
+-- 3. Faculty Table
+CREATE TABLE Faculty (FacultyID INT PRIMARY KEY, Name VARCHAR2(100) NOT NULL, DeptID INT, FOREIGN KEY (DeptID) REFERENCES Department(DeptID));
+
+-- 4. Course Table
+CREATE TABLE Course (CourseID INT PRIMARY KEY, CourseName VARCHAR2(100) NOT NULL, Credits INT, DeptID INT, FacultyID INT, FOREIGN KEY (DeptID) REFERENCES Department(DeptID), FOREIGN KEY (FacultyID) REFERENCES Faculty(FacultyID));
+
+-- 5. Enrollment Table
+CREATE TABLE Enrollment (EnrollID INT PRIMARY KEY, StudentID INT, CourseID INT, Semester VARCHAR2(20), Grade VARCHAR2(2), FOREIGN KEY (StudentID) REFERENCES Student(StudentID), FOREIGN KEY (CourseID) REFERENCES Course(CourseID));
