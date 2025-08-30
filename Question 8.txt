@@ -1,3 +1,5 @@
+STUDY THIS
+
 -- 1. Create Department (Parent)
 CREATE TABLE Department (
     DeptID INT PRIMARY KEY,

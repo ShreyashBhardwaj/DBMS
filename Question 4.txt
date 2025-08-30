@@ -1,3 +1,5 @@
+DONE
+
 DDL Commands
 
 -- 1. Add a new column in Student table

@@ -1,3 +1,5 @@
+This one as well
+
 CREATE USER college_user IDENTIFIED BY strongpassword;
 
 GRANT CONNECT, RESOURCE TO college_user;

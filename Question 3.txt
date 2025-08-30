@@ -1,3 +1,5 @@
+DONE
+
 -- 1. Department (no constraints initially)
 CREATE TABLE Department (
     DeptID INT,
