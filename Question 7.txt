@@ -1,3 +1,5 @@
+DONE
+
 -- Department Table
 CREATE TABLE Department (DeptID INT PRIMARY KEY, DeptName VARCHAR2(100) NOT NULL, HOD VARCHAR2(100) NOT NULL);
 

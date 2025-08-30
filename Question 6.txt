@@ -1,3 +1,5 @@
+DONE
+
 AGGREGATE FUNCTIONS
 
 -- MAX
@@ -19,4 +21,7 @@ SELECT AVG(Credits) AS AverageCredits FROM Course;
 
 SELECT COUNT(*) AS TotalStudents FROM Student;
 
+--SUM
+
+SELECT SUM(MARKS) as TotalMarks FROM Student;
 
