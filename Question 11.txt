@@ -1,14 +1,12 @@
--- GROUP BY
-
-SELECT d.DeptName, COUNT(s.StudentID) AS TotalStudents FROM Department d JOIN Student s ON d.DeptID = s.DeptID GROUP BY d.DeptName;
-
-
--- HAVING
-SELECT d.DeptName, COUNT(s.StudentID) AS TotalStudents FROM Department d JOIN Student s ON d.DeptID = s.DeptID GROUP BY d.DeptName HAVING COUNT(s.StudentID) > 2;
+SELECT DeptID, COUNT(*) AS TotalStudents
+FROM Student
+GROUP BY DeptID;
 
 
--- ANOTHER ONE
-SELECT d.DeptName, AVG(c.Credits) AS AvgCredits FROM Department d JOIN Course c ON d.DeptID = c.DeptID GROUP BY d.DeptName;
+SELECT DeptID, COUNT(*) AS TotalStudents
+FROM Student
+GROUP BY DeptID
+HAVING COUNT(*) > 2;
 
 
 -- VIEW

@@ -1,4 +1,4 @@
-This one as well
+DONE
 
 CREATE USER college_user IDENTIFIED BY strongpassword;
 

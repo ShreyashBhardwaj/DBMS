@@ -1,4 +1,5 @@
-STUDY THIS
+DONE
+
 
 -- 1. Create Department (Parent)
 CREATE TABLE Department (
